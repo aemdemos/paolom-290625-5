@@ -25,3 +25,195 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards.cards4 {
+  background: #f7f7f7;
+  padding: 48px 0;
+}
+
+/* Layout the list as 2 cards per row using flex */
+.cards.cards4 > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+/* Card: balance sizing for 2 per row, prevent wrapping of image/text */
+.cards.cards4 > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 3%);
+  overflow: hidden;
+  margin: 0;
+  border: none;
+  min-width: 0;
+  flex: 0 1 calc(50% - 32px);
+  max-width: 576px;
+  min-height: 226px;
+  transition: box-shadow 0.2s;
+}
+
+/* Compact card width so two fit side-by-side with proper gap */
+.cards.cards4 > ul > li:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.cards.cards4 > ul > li:hover {
+  box-shadow: 0 4px 28px rgb(0 0 0 / 10%);
+}
+
+/* Image fills card height, left side, always square aspect */
+.cards.cards4 .cards-card-image {
+  flex: 0 0 210px;
+  width: 210px;
+  min-width: 210px;
+  height: auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: #f3f3f3;
+  border-radius: 18px 0 0 18px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.cards.cards4 .cards-card-image picture,
+.cards.cards4 .cards-card-image img {
+  width: 100%;
+  height: 100%;
+  min-width: 210px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Ensure text block is top-aligned and fills space */
+.cards.cards4 .cards-card-body {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 28px 28px 28px 24px;
+  min-width: 0;
+  gap: 0.2em;
+}
+
+.cards.cards4 .cards-card-body p:first-child,
+.cards.cards4 .cards-card-body p:nth-child(2) {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 12px 0 0;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.cards.cards4 .cards-card-body p:first-child {
+  background: #f3f3f3;
+  color: #868686;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 14px;
+  padding: 4px 14px;
+  margin-right: 10px;
+  letter-spacing: 0.05em;
+  margin-left: 0;
+}
+
+.cards.cards4 .cards-card-body p:nth-child(2) {
+  color: #868686;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.cards.cards4 .cards-card-body p:nth-child(4) {
+  color: #595959;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+
+.cards.cards4 .cards-card-body p:last-child {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+.cards.cards4 .cards-card-body p:first-child + p {
+  margin-left: 0;
+}
+
+/* Headline */
+.cards.cards4 .cards-card-body h3 {
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #232323;
+  font-weight: 700;
+  margin: 10px 0 6px;
+  padding: 0;
+  line-height: 1.09;
+  letter-spacing: 0.017em;
+  overflow-wrap: break-word;
+}
+
+/* Responsive: stack single column on mobile */
+@media (width <= 1000px) {
+  .cards.cards4 > ul {
+    flex-direction: column;
+    gap: 32px 0;
+    align-items: center;
+  }
+
+  .cards.cards4 > ul > li {
+    max-width: 98vw;
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (width <= 700px) {
+  .cards.cards4 > ul > li {
+    flex-direction: column;
+    border-radius: 16px;
+    min-width: 0;
+    max-width: 100vw;
+    padding-bottom: 0;
+  }
+
+  .cards.cards4 .cards-card-image,
+  .cards.cards4 .cards-card-image picture,
+  .cards.cards4 .cards-card-image img {
+    min-height: 180px;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    height: 180px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .cards.cards4 .cards-card-body {
+    padding: 18px 14px;
+  }
+}
