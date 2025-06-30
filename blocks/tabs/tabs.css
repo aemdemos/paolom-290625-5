@@ -39,7 +39,6 @@
   margin: 0;
 }
 
-
 .tabs .tabs-list button[aria-selected='true'] {
   border-bottom: 1px solid var(--background-color);
   background-color: var(--background-color);
@@ -55,4 +54,96 @@
 
 .tabs .tabs-panel[aria-hidden='true'] {
   display: none;
+}
+
+.tabs.tabs5 {
+  background: #000;
+  padding: 0;
+  border: none;
+}
+
+/* Tab List: full width, no gaps, flex row, no extra border */
+.tabs.tabs5 .tabs-list {
+  display: flex;
+  flex-direction: row;
+  background: #000;
+  border: none;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  min-height: unset;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* Tab Buttons: equal width, no default backgrounds or borders, do not stretch */
+.tabs.tabs5 .tabs-list .tabs-tab {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  min-width: 0;
+  min-height: unset;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  transition: color 0.2s;
+  padding: 7px 0 0;
+}
+
+/* Label Styling: centered, correct font, no vertical padding */
+.tabs.tabs5 .tabs-list .tabs-tab p {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #757575;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: 0;
+  letter-spacing: 0;
+  transition: color 0.2s;
+  display: block;
+}
+
+/* Active Tab: white, bold, and with underline using border-bottom
+   Underline will sit just below the label, not at the bar's bottom */
+.tabs.tabs5 .tabs-list .tabs-tab[aria-selected='true'] {
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 4px;
+}
+
+.tabs.tabs5 .tabs-list .tabs-tab[aria-selected='true'] p {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Inactive Tabs: gray, normal weight */
+.tabs.tabs5 .tabs-list .tabs-tab[aria-selected='false'] p {
+  color: #757575;
+  font-weight: 400;
+}
+
+/* Remove any default button/focus styles */
+.tabs.tabs5 .tabs-list .tabs-tab,
+.tabs.tabs5 .tabs-list .tabs-tab:focus,
+.tabs.tabs5 .tabs-list .tabs-tab:active {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Remove default border/padding from panels if visible */
+.tabs.tabs5 .tabs-panel {
+  border: none;
+  padding: 0;
+  background: transparent;
+  margin: 0;
 }
