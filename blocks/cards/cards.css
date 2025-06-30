@@ -1,3 +1,4 @@
+
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -216,4 +217,74 @@
   .cards.cards4 .cards-card-body {
     padding: 18px 14px;
   }
+}
+
+.cards > ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.cards > ul > li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+}
+
+.cards .cards-card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.cards .cards-card-body p {
+  margin: 0;
+  padding: 0;
+  color: #222;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: Inter, Arial, sans-serif;
+}
+
+/* Responsive: two per row on medium screens */
+@media (width <= 1000px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 28px;
+  }
+}
+
+/* Responsive: one per row on small screens */
+@media (width <= 700px) {
+  .cards > ul {
+    grid-template-columns: 1fr;
+    gap: 20px 0;
+  }
+
+  .cards .cards-card-body {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.cards {
+  /* No base block from either, so only include properties if present in either snippet.
+     In this case, no properties existed for `.cards` itself in the original or generated code,
+     so result is an empty block (for completeness). */
 }
