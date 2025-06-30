@@ -21,6 +21,13 @@ header nav {
   font-family: var(--body-font-family);
 }
 
+header nav .nav-sections {
+  grid-area: sections;
+  flex: 1 1 auto;
+  display: none;
+  visibility: hidden;
+}
+
 header nav[aria-expanded='true'] {
   grid-template:
     'hamburger brand' var(--nav-height)
@@ -28,6 +35,12 @@ header nav[aria-expanded='true'] {
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
+}
+
+header nav[aria-expanded='true'] .nav-sections {
+  display: block;
+  visibility: visible;
+  align-self: start;
 }
 
 @media (width >= 900px) {
@@ -42,6 +55,85 @@ header nav[aria-expanded='true'] {
   header nav[aria-expanded='true'] {
     min-height: 0;
     overflow: visible;
+  }
+
+  header nav .nav-sections {
+    display: block;
+    visibility: visible;
+    white-space: nowrap;
+  }
+
+  header nav[aria-expanded='true'] .nav-sections {
+    align-self: unset;
+  }
+
+  header nav .nav-sections .nav-drop {
+    position: relative;
+    padding-right: 16px;
+    cursor: pointer;
+  }
+
+  header nav .nav-sections .nav-drop::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0.5em;
+    right: 2px;
+    transform: rotate(135deg);
+    width: 6px;
+    height: 6px;
+    border: 2px solid currentcolor;
+    border-radius: 0 1px 0 0;
+    border-width: 2px 2px 0 0;
+  }
+
+  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
+    top: unset;
+    bottom: 0.5em;
+    transform: rotate(315deg);
+  }
+
+  header nav .nav-sections ul {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    flex: 0 1 auto;
+    position: relative;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+    display: none;
+    position: relative;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+    display: block;
+    position: absolute;
+    left: -24px;
+    width: 200px;
+    top: 150%;
+    padding: 16px;
+    background-color: var(--light-color);
+    white-space: initial;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--light-color);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
+    padding: 8px 0;
   }
 }
 
@@ -150,19 +242,6 @@ header nav .nav-brand img {
 }
 
 /* sections */
-header nav .nav-sections {
-  grid-area: sections;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
-
-header nav[aria-expanded='true'] .nav-sections {
-  display: block;
-  visibility: visible;
-  align-self: start;
-}
-
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
@@ -181,88 +260,207 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
 }
 
-@media (width >= 900px) {
-  header nav .nav-sections {
-    display: block;
-    visibility: visible;
-    white-space: nowrap;
-  }
-
-  header nav[aria-expanded='true'] .nav-sections {
-    align-self: unset;
-  }
-
-  header nav .nav-sections .nav-drop {
-    position: relative;
-    padding-right: 16px;
-    cursor: pointer;
-  }
-
-  header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-  }
-
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
-  }
-
-  header nav .nav-sections ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
-    display: none;
-    position: relative;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
-    white-space: initial;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
-  }
-}
-
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* Header block visible and background */
+.header .block.header[data-block-status="loaded"] {
+  visibility: visible;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fafbf8;
+}
+
+/* Sticky header wrapper */
+.header-wrapper .nav-wrapper {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #fafbf8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+}
+
+/* Main nav flex layout for 3 sections */
+.header .nav-wrapper nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafbf8;
+  width: 100%;
+  max-width: 1264px;
+  margin: 0 auto;
+  padding: 0 32px;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+/* Hide hamburger menu on desktop */
+.header nav .nav-hamburger {
+  display: none;
+  visibility: hidden;
+}
+
+/* Brand/logo: remove artificial spacing, keep flush left */
+.header nav .nav-brand {
+  order: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-right: 0;
+}
+
+/* Logo image sizing */
+.header nav .nav-brand img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin-right: 8px;
+}
+
+/* Navigation menu section - flex: 1 enables centering */
+.header nav .nav-sections {
+  order: 2;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0%;
+  min-width: 0;
+  justify-content: center;
+}
+
+/* Center nav links horizontally between logo and button */
+.header nav .nav-sections .default-content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header nav .nav-sections .default-content-wrapper > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: none;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.header nav .nav-sections .default-content-wrapper > ul > li {
+  position: relative;
+  font-size: 13px;
+  color: #222;
+  font-weight: 400;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.header nav .nav-sections .default-content-wrapper > ul > li > a {
+  color: #222;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0;
+  background: none;
+}
+
+.header nav .nav-sections .default-content-wrapper > ul > li.nav-drop {
+  padding-right: 16px;
+}
+
+/* Hide dropdowns by default */
+.header nav .nav-sections .default-content-wrapper > ul > li > ul {
+  display: none;
+}
+
+/* Tool section (Subscribe button) - remove left margin to allow true centering */
+.header nav .nav-tools {
+  order: 3;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-left: 0;
+}
+
+/* Show only the last button-container if multiple are present */
+.header .nav-tools .button-container {
+  margin: 0;
+}
+.header .nav-tools .button-container:not(:last-child) {
+  display: none;
+}
+
+/* Style subscribe button to match visual target */
+.header .nav-tools .button {
+  display: inline-block;
+  padding: 2px 30px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #222;
+  background: #fff;
+  border: 1.5px solid #111;
+  border-radius: 9999px;
+  box-shadow: 0 2px 0 0 #f3f19b;
+  line-height: 2.1em;
+  font-weight: 400;
+  margin: 0;
+  text-decoration: none;
+  transition: box-shadow 0.15s;
+  cursor: pointer;
+}
+
+/* Remove blue hover/focus for .header subscribe button */
+.header .nav-tools .button:hover,
+.header .nav-tools .button:focus {
+  background: #fff;
+  text-decoration: underline;
+  color: #222;
+  border-color: #111;
+  box-shadow: 0 2px 0 0 #f3f19b;
+}
+
+/* Responsive: On small screens unstuck, stack sections vertically */
+@media (width <= 899px) {
+  .header-wrapper .nav-wrapper {
+    position: static;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .header .nav-wrapper nav {
+    flex-direction: column;
+    min-height: 0;
+    height: auto;
+    padding: 0 16px;
+  }
+
+  .header nav .nav-brand,
+  .header nav .nav-sections,
+  .header nav .nav-tools {
+    margin: 0;
+  }
+}
+
+/* Merged .header selector */
+.header {
+  display: flex;
+  width: 100%;
+  background: #fafbf8;
 }
