@@ -102,21 +102,6 @@
       ]
     },
     {
-      "name": "Hero",
-      "cluster": 6,
-      "source": "Hero",
-      "target": "Hero",
-      "key": "hero6",
-      "instances": [
-        {
-          "url": "https://wknd-trendsetters-3df4b7964376074fda42d.webflow.io/",
-          "urlHash": "c6614ffff58c17311b496f0cb404032cc65148bd",
-          "uuid": "c6614fff-09-763479c3261fc43016e8eafc05c8ea8587e61655",
-          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
       "name": "Accordion",
       "cluster": 7,
       "source": "Accordion",
