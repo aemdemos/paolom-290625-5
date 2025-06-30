@@ -55,6 +55,100 @@
   padding: 0 16px;
 }
 
+.accordion.accordion7 {
+  background: #FAFAF6;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.accordion.accordion7 details {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.accordion.accordion7 details:not(:last-child) {
+  border-bottom: 1px solid #E9E9E2;
+}
+
+.accordion.accordion7 details:last-child {
+  border-bottom: none;
+}
+
+.accordion.accordion7 summary {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 14px 16px 13px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  color: #232323;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 1.3;
+  gap: 0;
+}
+
+.accordion.accordion7 summary:hover,
+.accordion.accordion7 summary:focus {
+  background: none;
+}
+
+.accordion.accordion7 summary::-webkit-details-marker {
+  display: inline-block;
+  font-size: 22px;
+  vertical-align: middle;
+  margin-left: 6px;
+  margin-right: -2px;
+  position: relative;
+  top: 2px;
+}
+
+.accordion.accordion7 .accordion-item-label {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 1 1 auto;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #232323;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.accordion.accordion7 .accordion-item-label p {
+  margin: 0;
+  padding: 0;
+  color: #232323;
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.accordion.accordion7 .accordion-item-body {
+  padding: 0 16px 13px;
+  color: #232323;
+  font-size: 15px;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  background: none;
+  border: none;
+  line-height: 1.5;
+}
+
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
